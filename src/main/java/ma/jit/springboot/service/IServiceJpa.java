@@ -16,7 +16,7 @@ public interface IServiceJpa {
 	public Personne getPersonneById(int id);
 	public List<Personne> findByFirstName(String firstName);
 	public List<Personne> findByFirstNameAndLastName(String firstName, String lastName); 
-	public List<Personne> findAll(int page, int size);
+	public Page<Personne> findAll(int page, int size);
 
 
 }

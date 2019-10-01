@@ -54,8 +54,8 @@ public class ServiceJpa implements IServiceJpa {
 	public void setPersonneJpa(IPersonneDaoJpa personneJpa) {
 		this.personneJpa = personneJpa;
 	}
-	public List<Personne> findAll(int page, int size){
-		List<Personne> mylist= personneJpa.findAll(PageRequest.of(page, size)).getContent();
+	public Page<Personne> findAll(int page, int size){
+		Page<Personne> mylist= personneJpa.findAll(PageRequest.of(page, size));
 		return mylist;
 	}
 

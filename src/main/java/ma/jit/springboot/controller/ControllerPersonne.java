@@ -1,14 +1,12 @@
 package ma.jit.springboot.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ma.jit.springboot.dao.IPersonneDaoJpa;
 import ma.jit.springboot.entities.Personne;
 import ma.jit.springboot.service.IServiceJpa;
 
@@ -32,9 +30,17 @@ public class ControllerPersonne {
 		return "personne";
 	}
 	@RequestMapping("/allpersonne")
-	public String findAllpersonne(Model model, @RequestParam("page") int page,@RequestParam("size") int size) {
-		  List<Personne> mylist = service.findAll(page,size);
-		  model.addAttribute("mylists",mylist);
+	public String findAllpersonne(Model model, @RequestParam(name ="page", defaultValue = "0") int page,@RequestParam(name="size", defaultValue = "2") int size) {
+		  Page<Personne> mylist = service.findAll(page,size);
+		  
+		  int numPages = mylist.getTotalPages();
+		  int[] pagesTab = new int[numPages];
+		  for(int i=0; i<pagesTab.length;i++) {
+			  pagesTab[i] = i;
+		  }
+		  
+		  model.addAttribute("pagesTab",pagesTab);
+		  model.addAttribute("mylists",mylist.getContent());
 		  
 		return "resultatall";
 		
