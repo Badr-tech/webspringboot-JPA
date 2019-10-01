@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Liste des personnes</h1>
-<table class="table">
-<thead>
-<th>id</th>
-<th>Nom</th>
-<th>Prenom</th>
-<th>Email</th>
-</thead>
-<tbody>
-<tr th:each="p: ${mylists}">
-    <td th:text="${p.id}" />
-    <td th:text="${p.firstName}" />
-    <td th:text="${p.lastName}" />
-    <td th:text="${p.email}" />
-</tr>
-</tbody>
-</table>
+	<h1>Liste des personnes</h1>
+	<table class="table">
+		<thead>
+			<th>id</th>
+			<th>Nom</th>
+			<th>Prenom</th>
+			<th>Email</th>
+		</thead>
+		<tbody>
+			<tr th:each="p: ${mylists}">
+				    
+				<td th:text="${p.id}" />     
+				<td th:text="${p.firstName}" />     
+				<td th:text="${p.lastName}" />     
+				<td th:text="${p.email}" />
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		<ul class="nav nav-pills">
+		<li th:each="f:${pagesTab}" class="nav-item" >
+		<a th:text="${f}" th:href="@{allpersonne(page=${f})}" class="nav-link"></a>
+		</li>
+		
+		</ul>
+	</div>
 
 </body>
 </html>
