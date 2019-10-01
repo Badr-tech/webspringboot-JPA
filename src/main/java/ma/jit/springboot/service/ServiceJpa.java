@@ -3,6 +3,9 @@ package ma.jit.springboot.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ma.jit.springboot.dao.IPersonneDaoJpa;
@@ -51,5 +54,10 @@ public class ServiceJpa implements IServiceJpa {
 	public void setPersonneJpa(IPersonneDaoJpa personneJpa) {
 		this.personneJpa = personneJpa;
 	}
+	public List<Personne> findAll(int page, int size){
+		List<Personne> mylist= personneJpa.findAll(PageRequest.of(page, size)).getContent();
+		return mylist;
+	}
+
 
 }

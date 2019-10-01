@@ -2,6 +2,9 @@ package ma.jit.springboot.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import ma.jit.springboot.entities.Personne;
 
 public interface IServiceJpa {
@@ -13,5 +16,7 @@ public interface IServiceJpa {
 	public Personne getPersonneById(int id);
 	public List<Personne> findByFirstName(String firstName);
 	public List<Personne> findByFirstNameAndLastName(String firstName, String lastName); 
+	public List<Personne> findAll(int page, int size);
+
 
 }

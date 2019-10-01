@@ -5,7 +5,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-            <span th:text="'Hello, ' + ${personnes.firstName}"></span>
+	<form action="resultat" method="get">
+		<label>Nom :</label> 
+		<input name="firstName" type="text" required="required"></input><br> 
+		<label>Prenom:</label>
+		<input name="lastName" type="text"></input> <br>
+		<label>Email :</label>
+		<input name="email" type="email"></input><br>
+		<input type="submit" value="ajouter"></input>
+	</form>
 
 </body>
 </html>
